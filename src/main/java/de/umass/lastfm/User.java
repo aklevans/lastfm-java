@@ -35,7 +35,7 @@ import de.umass.xml.DomElement;
 /**
  * Contains user information and provides bindings to the methods in the user. namespace.
  *
- * @author Janni Kovacs
+ * @author Janni Kovacs, Alex Klevans
  */
 public class User extends ImageHolder {
 
@@ -181,31 +181,135 @@ public class User extends ImageHolder {
 		return ResponseBuilder.buildPaginatedResult(result, Track.class);
 	}
 
+	/**
+	 * Gets up to 50 of the top albums that a user has ever listened to
+	 * @param user the user
+	 * @param apiKey the api key of the application
+	 * @return collection of the top albums
+	 */
 	public static Collection<Album> getTopAlbums(String user, String apiKey) {
-		return getTopAlbums(user, Period.OVERALL, apiKey);
+		return getTopAlbums(user, Period.OVERALL, 50, apiKey);
 	}
 
+	/**
+	 * Gets up to 50 of the top albums that a user has listened to in a given time period
+	 * @param user the user
+	 * @param period
+	 * @param apiKey
+	 * @return collection of the top albums
+	 */
 	public static Collection<Album> getTopAlbums(String user, Period period, String apiKey) {
-		Result result = Caller.getInstance().call("user.getTopAlbums", apiKey, "user", user, "period", period.getString());
+		return getTopAlbums(user, period, 50, apiKey);
+	}
+	
+	/**
+	 * Gets a specified maximum number of a user's top albums (instead of the default 50)
+	 * @param user the user to get the top albums from
+	 * @param limit the maximum number of albums to get (max allowed is 1000)
+	 * @param apiKey the api key of the application
+	 * @return collection of the top albums
+	 */
+	public static Collection<Album> getTopAlbums(String user, Period period, int limit, String apiKey) {
+		Result result = Caller.getInstance().call("user.getTopAlbums", apiKey, "user", user, "period", period.toString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Album.class);
 	}
-
-	public static Collection<Artist> getTopArtists(String user, String apiKey) {
-		return getTopArtists(user, Period.OVERALL, apiKey);
+	
+	/**
+	 * Gets the top 1000 albums a user has ever listened to 
+	 * @param user the user to get the albums from
+	 * @param apiKey the api key of the application
+	 * @return collection of the top 1000 Albums
+	 */
+	public static Collection<Album> getAllAlbums(String user, String apiKey){
+		return getTopAlbums(user, Period.OVERALL, 1000, apiKey);
 	}
 
+	/**
+	 * Gets up the top 50 artists that a user has ever listened to
+	 * @param user the user to get the artists from
+	 * @param apiKey the api key of the application
+	 * @return collection of the top 50 artists
+	 */
+	public static Collection<Artist> getTopArtists(String user, String apiKey) {
+		return getTopArtists(user, Period.OVERALL, 50, apiKey);
+	}
+
+	/**
+	 * Gets the top 50 artists that a user has listened to in a given period of time
+	 * @param user the user to get the artists from
+	 * @param period the period of time
+	 * @param apiKey the api key of the application
+	 * @return collection of the top 50 artists
+	 */
 	public static Collection<Artist> getTopArtists(String user, Period period, String apiKey) {
-		Result result = Caller.getInstance().call("user.getTopArtists", apiKey, "user", user, "period", period.getString());
+		return getTopArtists(user, period, 50, apiKey);
+	}
+	
+	/**
+	 * Gets a up to a given number of the top artists a user has listened to in a given period of time
+	 * @param user the user to get stats from
+	 * @param period the period of time
+	 * @param limit the upper limit of number of artists returned (max 1000)
+	 * @param apiKey the api key of the application
+	 * @return collection of the top artists
+	 */
+	public static Collection<Artist> getTopArtists(String user, Period period, int limit, String apiKey){
+		Result result = Caller.getInstance().call("user.getTopArtists", apiKey, "user", user, "period", period.getString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Artist.class);
 	}
-
-	public static Collection<Track> getTopTracks(String user, String apiKey) {
-		return getTopTracks(user, Period.OVERALL, apiKey);
+	
+	/**
+	 * Gets the top 1000 artists that a user has ever listened to
+	 * @param user the user to get stats from
+	 * @param apiKey the api key of the application
+	 * @return collection of top artists
+	 */
+	public static Collection<Artist> getAllArtists(String user, String apiKey){
+		return getTopArtists(user, Period.OVERALL, 1000, apiKey);
 	}
 
+	/**
+	 * Gets the top 50 tracks a user has ever listened to
+	 * @param user the user to get stats from
+	 * @param apiKey the api key of the application
+	 * @return collection of top tracks
+	 */
+	public static Collection<Track> getTopTracks(String user, String apiKey) {
+		return getTopTracks(user, Period.OVERALL, 50, apiKey);
+	}
+
+	/**
+	 * Gets the top 50 tracks a user has listened to in a given period of time
+	 * @param user the user to get stats from
+	 * @param period the period of time
+	 * @param apiKey the api key of the application
+	 * @return collection of top tracks
+	 */
 	public static Collection<Track> getTopTracks(String user, Period period, String apiKey) {
-		Result result = Caller.getInstance().call("user.getTopTracks", apiKey, "user", user, "period", period.getString());
+		return getTopTracks(user, period, 50, apiKey);
+	}
+	
+	/**
+	 * Gets a given number of the top tracks a user has listened to in a given period of time
+	 * @param user the user to get stats from
+	 * @param period the period of time
+	 * @param limit the maximum number of tracks to get (max 1000)
+	 * @param apiKey the api key of the application
+	 * @return collection of top tracks
+	 */
+	public static Collection<Track> getTopTracks(String user, Period period, int limit, String apiKey) {
+		Result result = Caller.getInstance().call("user.getTopTracks", apiKey, "user", user, "period", period.getString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Track.class);
+	}
+	
+	/**
+	 * Gets the top 1000 tracks a user has ever listened to
+	 * @param user the user to get data from
+	 * @param apiKey the api key of the application
+	 * @return collection of top tracks
+	 */
+	public static Collection<Track> getAllTracks(String user, String apiKey){
+		return getTopTracks(user, Period.OVERALL, 1000, apiKey);
 	}
 
 	public static Collection<Tag> getTopTags(String user, String apiKey) {
