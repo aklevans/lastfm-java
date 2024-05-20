@@ -9,13 +9,13 @@
 		<version>7</version>
 	</parent>
 
-	<groupId>de.u-mass</groupId>
-	<artifactId>lastfm-java</artifactId>
-	<version>0.1.3-SNAPSHOT</version>
+	<groupId>io.scrobbl</groupId>
+	<artifactId>lastfm-java-improved</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>Last.fm bindings</name>
 	<description>Java bindings for the Last.fm webservice API</description>
-	<url>http://code.google.com/p/lastfm-java/</url>
+	<url>https://github.com/aklevans/lastfm-java</url>
 
 	<licenses>
 		<license>
@@ -27,14 +27,18 @@
 
 	<scm>
 		<connection>scm:git:https://code.google.com/p/lastfm-java</connection>
-		<developerConnection>scm:git:https://code.google.com/p/lastfm-java</developerConnection>
-		<url>http://code.google.com/p/lastfm-java/</url>
+		<developerConnection>scm:git:https://github.com/aklevans/lastfm-java</developerConnection>
+		<url>hhttps://github.com/aklevans/lastfm-java</url>
 	</scm>
 
 	<developers>
 		<developer>
 			<name>Janni Kovacs</name>
 			<email>jannikovacs@gmail.com</email>
+		</developer>
+		<developer>
+			<name>Alex Klevans</name>
+			<email>alexklevans@gmail.com</email>
 		</developer>
 	</developers>
 </project>
