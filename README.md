@@ -1,4 +1,5 @@
 # Last.fm API Bindings for Java
+This is a fork of an existing project that has been inactive since 2017.
 
 The Last.fm API bindings for java are a BSD-licensed wrapper for the [Last.fm api](http://www.last.fm/api) and the Last.fm submission service (scrobbling).
 
