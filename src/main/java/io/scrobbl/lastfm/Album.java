@@ -47,7 +47,7 @@ public class Album extends MusicEntry {
 	private static final DateFormat RELEASE_DATE_FORMAT = new SimpleDateFormat("d MMM yyyy, HH:mm", Locale.ENGLISH);
 	private static final DateFormat RELEASE_DATE_FORMAT_2 = new SimpleDateFormat("E, d MMM yyyy HH:mm:ss Z",
 			Locale.ENGLISH); /* only used in User.getNewReleases() */
-	
+
 	private String artist;
 	private Date releaseDate;
 	private Collection<Track> tracks;
@@ -58,7 +58,7 @@ public class Album extends MusicEntry {
 	}
 
 	private Album(String name, String url, String mbid, int playcount, int listeners, boolean streamable,
-					String artist) {
+				  String artist) {
 		super(name, url, mbid, playcount, listeners, streamable);
 		this.artist = artist;
 	}
@@ -74,9 +74,9 @@ public class Album extends MusicEntry {
 	/**
 	 * Returns the list of {@link Track}s on this album. This information is only available in
 	 * {@link Album#getInfo(String, String, String)} responses.
-	 * 
+	 *
 	 * @return the list of tracks
-	 * @see Album#getInfo(String, String, String) 
+	 * @see Album#getInfo(String, String, String)
 	 */
 	public Collection<Track> getTracks() {
 		return tracks;
@@ -291,7 +291,7 @@ public class Album extends MusicEntry {
 	private static class AlbumFactory implements ItemFactory<Album> {
 		public Album createItemFromElement(DomElement element) {
 			Album album = new Album(null, null, null);
-			MusicEntry.loadStandardInfo(album, element);
+			loadStandardInfo(album, element);
 			if (element.hasChild("artist")) {
 				album.artist = element.getChild("artist").getChildText("name");
 				if (album.artist == null)

@@ -201,7 +201,7 @@ public class User extends ImageHolder {
 	public static Collection<Album> getTopAlbums(String user, Period period, String apiKey) {
 		return getTopAlbums(user, period, 50, apiKey);
 	}
-	
+
 	/**
 	 * Gets a specified maximum number of a user's top albums (instead of the default 50)
 	 * @param user the user to get the top albums from
@@ -213,9 +213,9 @@ public class User extends ImageHolder {
 		Result result = Caller.getInstance().call("user.getTopAlbums", apiKey, "user", user, "period", period.toString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Album.class);
 	}
-	
+
 	/**
-	 * Gets the top 1000 albums a user has ever listened to 
+	 * Gets the top 1000 albums a user has ever listened to
 	 * @param user the user to get the albums from
 	 * @param apiKey the api key of the application
 	 * @return collection of the top 1000 Albums
@@ -244,7 +244,7 @@ public class User extends ImageHolder {
 	public static Collection<Artist> getTopArtists(String user, Period period, String apiKey) {
 		return getTopArtists(user, period, 50, apiKey);
 	}
-	
+
 	/**
 	 * Gets a up to a given number of the top artists a user has listened to in a given period of time
 	 * @param user the user to get stats from
@@ -257,7 +257,7 @@ public class User extends ImageHolder {
 		Result result = Caller.getInstance().call("user.getTopArtists", apiKey, "user", user, "period", period.getString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Artist.class);
 	}
-	
+
 	/**
 	 * Gets the top 1000 artists that a user has ever listened to
 	 * @param user the user to get stats from
@@ -288,7 +288,7 @@ public class User extends ImageHolder {
 	public static Collection<Track> getTopTracks(String user, Period period, String apiKey) {
 		return getTopTracks(user, period, 50, apiKey);
 	}
-	
+
 	/**
 	 * Gets a given number of the top tracks a user has listened to in a given period of time
 	 * @param user the user to get stats from
@@ -301,7 +301,7 @@ public class User extends ImageHolder {
 		Result result = Caller.getInstance().call("user.getTopTracks", apiKey, "user", user, "period", period.getString(), "limit", Integer.toString(limit));
 		return ResponseBuilder.buildCollection(result, Track.class);
 	}
-	
+
 	/**
 	 * Gets the top 1000 tracks a user has ever listened to
 	 * @param user the user to get data from
@@ -713,7 +713,7 @@ public class User extends ImageHolder {
 			user.id = element.getChildText("id");
 			if (element.hasChild("realname"))
 				user.realname = element.getChildText("realname");
-			ImageHolder.loadImages(user, element);
+			loadImages(user, element);
 			user.language = element.getChildText("lang");
 			user.country = element.getChildText("country");
 			if (element.hasChild("age")) {
