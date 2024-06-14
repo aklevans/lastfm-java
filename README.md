@@ -7,7 +7,7 @@ It provides classes and methods to invoke Last.fm API methods as well as scrobbl
 
 ### Maven Using JitPack
 
-
+Add jitpack to repositories
 ```
 <repositories>
     <repository>
@@ -16,7 +16,7 @@ It provides classes and methods to invoke Last.fm API methods as well as scrobbl
     </repository>
 </repositories>
 ```
-
+Add to dependencies
 
 ```
 <dependency>
