@@ -54,7 +54,7 @@ public class Artist extends MusicEntry {
 		super(name, url);
 	}
 
-	protected Artist(String name, String url, String mbid, int playcount, int listeners, boolean streamable) {
+	protected Artist(String name, String url, String mbid, long playcount, int listeners, boolean streamable) {
 		super(name, url, mbid, playcount, listeners, streamable);
 	}
 

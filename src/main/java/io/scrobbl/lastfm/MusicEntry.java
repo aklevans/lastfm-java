@@ -50,8 +50,8 @@ public abstract class MusicEntry extends ImageHolder {
 	protected String name;
 	protected String url;
 	protected String mbid;
-	protected int playcount;
-	protected int userPlaycount;
+	protected long playcount;
+	protected long userPlaycount;
 	protected int listeners;
 	protected boolean streamable;
 	protected String id;
@@ -73,7 +73,7 @@ public abstract class MusicEntry extends ImageHolder {
 		this(name, url, null, -1, -1, false);
 	}
 
-	protected MusicEntry(String name, String url, String mbid, int playcount, int listeners, boolean streamable) {
+	protected MusicEntry(String name, String url, String mbid, long playcount, int listeners, boolean streamable) {
 		this.name = name;
 		this.url = url;
 		this.mbid = mbid;
@@ -82,7 +82,7 @@ public abstract class MusicEntry extends ImageHolder {
 		this.streamable = streamable;
 	}
 
-	public int getListeners() {
+	public long getListeners() {
 		return listeners;
 	}
 
@@ -98,11 +98,11 @@ public abstract class MusicEntry extends ImageHolder {
 		return id;
 	}
 
-	public int getPlaycount() {
+	public long getPlaycount() {
 		return playcount;
 	}
 
-	public int getUserPlaycount() {
+	public long getUserPlaycount() {
 		return userPlaycount;
 	}
 
@@ -204,10 +204,10 @@ public abstract class MusicEntry extends ImageHolder {
 		if (element.hasChild("percentagechange")) {
 			entry.percentageChange = Integer.parseInt(element.getChildText("percentagechange"));
 		}
-		int playcount = playcountString == null || playcountString.length() == 0 ? -1 : Integer
-				.parseInt(playcountString);
-		int userPlaycount = userPlaycountString == null || userPlaycountString.length() == 0 ? -1 : Integer
-				.parseInt(userPlaycountString);
+		long playcount = playcountString == null || playcountString.length() == 0 ? -1 : Long
+				.parseLong(playcountString);
+		long userPlaycount = userPlaycountString == null || userPlaycountString.length() == 0 ? -1 : Long
+				.parseLong(userPlaycountString);
 		int listeners = listenersString == null || listenersString.length() == 0 ? -1 : Integer
 				.parseInt(listenersString);
 		// streamable
