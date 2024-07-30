@@ -22,7 +22,7 @@ Add to dependencies
 <dependency>
     <groupId>com.github.aklevans</groupId>
     <artifactId>lastfm-java</artifactId>
-    <version>Tag</version>
+    <version>master-SNAPSHOT</version>
 </dependency>
 ```
 
