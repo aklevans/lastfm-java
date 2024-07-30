@@ -83,7 +83,7 @@ public class Track extends MusicEntry {
 		this.artist = artist;
 	}
 
-	protected Track(String name, String url, String mbid, int playcount, int listeners, boolean streamable,
+	protected Track(String name, String url, String mbid, long playcount, int listeners, boolean streamable,
 					String artist, String artistMbid, boolean fullTrackAvailable, boolean nowPlaying) {
 		super(name, url, mbid, playcount, listeners, streamable);
 		this.artist = artist;

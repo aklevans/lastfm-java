@@ -28,7 +28,7 @@
 	<scm>
 		<connection>scm:git:https://code.google.com/p/lastfm-java</connection>
 		<developerConnection>scm:git:https://github.com/aklevans/lastfm-java</developerConnection>
-		<url>hhttps://github.com/aklevans/lastfm-java</url>
+		<url>https://github.com/aklevans/lastfm-java</url>
 	</scm>
 
 	<developers>

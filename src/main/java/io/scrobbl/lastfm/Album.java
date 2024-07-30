@@ -57,7 +57,7 @@ public class Album extends MusicEntry {
 		this.artist = artist;
 	}
 
-	private Album(String name, String url, String mbid, int playcount, int listeners, boolean streamable,
+	private Album(String name, String url, String mbid, long playcount, int listeners, boolean streamable,
 				  String artist) {
 		super(name, url, mbid, playcount, listeners, streamable);
 		this.artist = artist;
